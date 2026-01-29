@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
 
     return {
-      base: './', 
+      base: '/CCULab203Website/',
 
       server: {
         port: 3000,
