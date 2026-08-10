@@ -34,6 +34,7 @@ const rawMembersData: RawMember[] = [
   { name: "Ejaz Ahmed", role: "博士班" },
   { name: "林昀嗣", role: "博士班" },
   { name: "魏碩池", role: "博士班" },
+  { name: "阮博軒", role: "博士班" },
   { name: "陳品澔", role: "碩士班二年級" },
   { name: "陳伯彥", role: "碩士班二年級" },
   { name: "汪勇霆", role: "碩士班二年級" },
