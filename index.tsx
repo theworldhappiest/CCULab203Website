@@ -1,7 +1,8 @@
 import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom'; // 1. 這裡要引入
+// 1. 改成引入 HashRouter
+import { HashRouter } from 'react-router-dom'; 
 import App from './App';
 
 const rootElement = document.getElementById('root');
@@ -12,9 +13,9 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    {/* 2. 重點在這裡！一定要用 BrowserRouter 把 App 包起來 */}
-    <BrowserRouter>
+    {/* 2. 改用 HashRouter 把 App 包起來 */}
+    <HashRouter>
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );

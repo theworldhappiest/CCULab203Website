@@ -16,7 +16,7 @@ interface RawAlumni {
 
 export interface Member extends RawMember {
   id: number;
-  image: string; // 確保匯出時一定有圖
+  image: string; // 確保匯出時一定有圖 (不管是真的還是假的)
 }
 
 export interface Alumni extends RawAlumni {
@@ -25,7 +25,10 @@ export interface Alumni extends RawAlumni {
 
 // ==========================================
 // 2. [現任成員] 請在這裡編輯名單 (不用填 ID)
+// ⬇️ [範例] 只有這一行是你需要手動加的
+// 請確認你的照片檔名是 .jpg 並且放在 public/member/ 資料夾內
 // ==========================================
+
 const rawMembersData: RawMember[] = [
   { name: "Winder Ta", role: "助理研究員" },
   { name: "Ejaz Ahmed", role: "博士班" },
@@ -42,18 +45,30 @@ const rawMembersData: RawMember[] = [
   { name: "劉哲銘", role: "碩士班一年級" },
   { name: "李科宏", role: "碩士班一年級" },
   { name: "莊智翔", role: "碩士班一年級" },
-  // 若有新成員，直接在這裡往下加一行即可...
 ];
 
-// 自動轉換邏輯：產生 ID + 自動大頭貼
-export const currentMembers: Member[] = rawMembersData.map((member, index) => ({
-  ...member,
-  id: index + 1,
-  // [修改重點]
-  // 1. 加上 length=${member.name.length} -> 讓它根據名字長度決定顯示幾個字 (3個字就顯示3個)
-  // 2. 加上 font-size=0.3 -> 字稍微縮小一點，才不會 3 個字擠爆圓圈
-  image: member.image || `https://ui-avatars.com/api/?name=${member.name}&background=1e3a8a&color=fff&size=200&length=${member.name.length}&font-size=0.3`
-}));
+// 自動轉換邏輯：產生 ID + 處理圖片路徑
+export const currentMembers: Member[] = rawMembersData.map((member, index) => {
+  // [邏輯說明]
+  // 1. 如果有填 image -> 加上 BASE_URL (解決 GitHub Pages 路徑問題)
+  // 2. 如果沒填 image -> 使用 ui-avatars 產生預設圖
+  
+  let finalImageUrl = "";
+
+  if (member.image) {
+    // 這裡是關鍵！自動幫你串接 /CCULab203Website/ + members/wang.jpg
+    finalImageUrl = `${import.meta.env.BASE_URL}${member.image}`;
+  } else {
+    // 原本的自動生成邏輯
+    finalImageUrl = `https://ui-avatars.com/api/?name=${member.name}&background=1e3a8a&color=fff&size=200&length=${member.name.length}&font-size=0.3`;
+  }
+
+  return {
+    ...member,
+    id: index + 1,
+    image: finalImageUrl
+  };
+});
 
 // ==========================================
 // 3. [歷屆成員] 請在這裡編輯名單 (不用填 ID)
@@ -99,6 +114,6 @@ const rawAlumniData: RawAlumni[] = [
 
 // 自動轉換邏輯：產生 ID
 export const alumniList: Alumni[] = rawAlumniData.map((alumni, index) => ({
-  id: index + 1, // 自動產生 1, 2, 3... 避免重複 ID 報錯
+  id: index + 1,
   ...alumni
 }));

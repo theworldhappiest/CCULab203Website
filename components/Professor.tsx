@@ -13,7 +13,7 @@ const Professor: React.FC = () => {
               <div className="absolute inset-0 bg-lab-primary rounded-lg transform translate-x-3 translate-y-3"></div>
               {/* [圖片修改]: 請將 src 換成教授的實際照片連結 */}
               <img 
-                src="public/professor/SL_Chen_0.jpg" 
+                src={`${import.meta.env.BASE_URL}professor/SL_Chen_0.jpg`}
                 alt="指導教授" 
                 className="relative rounded-lg shadow-xl w-full max-w-sm object-cover transition-all duration-500"
               />
@@ -27,7 +27,7 @@ const Professor: React.FC = () => {
             <h2 className="text-4xl font-bold text-gray-900 mb-6">陳世樂 特聘教授兼研發長 (Dr. Chen, Shyh-Leh)</h2>
             
             <p className="text-gray-600 text-lg mb-6 leading-relaxed">
-              專長於機電整合控制、磁浮技術與非線性控制系統。致力於培養具備實作能力與理論基礎的工程人才。曾獲得多次國科會傑出研究獎項，並與多家指標性企業進行產學合作。
+              專長於非線性動態系統分析、穩定性分析、磁浮技術與非線性控制系統。致力於培養具備實作能力與理論基礎的工程人才。
             </p>
 
             <div className="space-y-4 mb-8">

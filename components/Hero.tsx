@@ -13,8 +13,8 @@ const Hero: React.FC = () => {
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/hero/pexels-louis-courbiere-3133037-4733744.jpg')", 
-        }}
+          backgroundImage: `url('${import.meta.env.BASE_URL}hero/pexels-louis-courbiere-3133037-4733744.jpg')`,
+          }}
       >
         {/* 黑色遮罩，增加文字可讀性 */}
         <div className="absolute inset-0 bg-lab-primary/70"></div>
@@ -23,10 +23,10 @@ const Hero: React.FC = () => {
       {/* 文字內容 */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <h2 className="text-yellow-400 font-bold tracking-widest text-lg md:text-xl mb-4 uppercase animate-fade-in-up">
-          Factory 203 Mechatronics Lab
+          Chen's Mechatronics Lab
         </h2>
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight tracking-tight shadow-sm">
-          工廠203 機電控制實驗室
+          陳世樂教授 機電控制實驗室
         </h1>
         <p className="text-gray-200 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-light">
           專注於精密運動控制與迭代學習演算法、智慧機器人與積層製造系統，以及先進磁浮軸承與綠能應用之先端研究。
